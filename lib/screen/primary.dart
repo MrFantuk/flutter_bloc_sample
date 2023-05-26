@@ -19,21 +19,13 @@ class PrimaryScreen extends StatelessWidget {
               title: const Text("bloc example 1"),
               trailing: const Icon(CupertinoIcons.chevron_right),
             ),
-            ListTile(
-              onTap: () {},
-              title: const Text("bloc example 1"),
-              trailing: const Icon(CupertinoIcons.chevron_right),
-            ),
+          
             ListTile(
               onTap: () {},
               title: const Text("cubit example 1"),
               trailing: const Icon(CupertinoIcons.chevron_right),
             ),
-            ListTile(
-              onTap: () {},
-              title: const Text("cubit example 1"),
-              trailing: const Icon(CupertinoIcons.chevron_right),
-            ),
+            
           ],
         ),
       ),

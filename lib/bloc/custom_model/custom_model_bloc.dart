@@ -15,7 +15,7 @@ class CustomModelBloc extends Bloc<CustomModelEvent, CustomModelState> {
         // Симуляция загрузки
         emit(CustomModelLoading());
         // Симуляция ожидания
-        Future.delayed(const Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
         emit(CustomModelLoaded(event.myModel));
       },
     );
@@ -24,7 +24,8 @@ class CustomModelBloc extends Bloc<CustomModelEvent, CustomModelState> {
         // Симуляция загрузки
         emit(CustomModelLoading());
         // Симуляция ожидания
-        Future.delayed(const Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
+        emit(CustomModelError(event.error));
       },
     );
   }
@@ -33,7 +34,7 @@ class CustomModelBloc extends Bloc<CustomModelEvent, CustomModelState> {
     // Симуляция загрузки
     emit(CustomModelLoading());
     // Симуляция ожидания
-    Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     emit(CustomModelLoaded(TextColorModel(title: event.title)));
   }
 
@@ -41,7 +42,7 @@ class CustomModelBloc extends Bloc<CustomModelEvent, CustomModelState> {
     // Симуляция загрузки
     emit(CustomModelLoading());
     // Симуляция ожидания
-    Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     emit(CustomModelLoaded(TextColorModel(title: "Default title", color: event.color)));
   }
 }

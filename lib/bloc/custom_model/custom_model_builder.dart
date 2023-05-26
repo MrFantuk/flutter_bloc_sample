@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_sample/bloc/custom_model/custom_model_bloc.dart';
@@ -17,18 +18,22 @@ class CustomModelBuilder extends StatelessWidget {
           return const Text("Initial state");
         }
         if (state is CustomModelLoading) {
-          return Column(
-            children: const [
-              CircularProgressIndicator(),
-              SizedBox(
-                height: 10,
-              ),
-              Text("Future laoding data")
-            ],
+          return const ListTile(
+            title: Text("Loading data"),
+            trailing: CircularProgressIndicator(),
           );
         }
         if (state is CustomModelLoaded) {
           return myBuilder(state.myModel);
+        }
+        if (state is CustomModelError) {
+          return ListTile(
+            leading: const Icon(
+              CupertinoIcons.info,
+              color: Colors.red,
+            ),
+            title: Text(state.error),
+          );
         }
         return const CircularProgressIndicator();
       },

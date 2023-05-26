@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,33 +42,34 @@ class CustomModelBlocScreen extends StatelessWidget {
                   title: Text("change only text:"),
                 ),
                 OutlinedButton(
-                    onPressed: () => customModelBlocProvider.add(ChangeCustomModelTitle("Hello")),
-                    child: const Text("change to 'Hello'")),
-                OutlinedButton(
-                    onPressed: () => customModelBlocProvider.add(ChangeCustomModelTitle("Text2")),
-                    child: const Text("change to 'Text2'")),
-                OutlinedButton(
-                    onPressed: () => customModelBlocProvider.add(ChangeCustomModelTitle("Other text")),
-                    child: const Text("change to 'Other text'")),
+                    onPressed: () {
+                      Random random = Random();
+                      int randomNumber = random.nextInt(strings.length);
+                      customModelBlocProvider.add(ChangeCustomModelTitle(strings[randomNumber]));
+                    },
+                    child: const Text("Change title to random String")),
                 const Divider(),
                 const ListTile(
                   title: Text("change only color:"),
                 ),
-                ColorPicker(
-                    pickersEnabled: const <ColorPickerType, bool>{
-                      ColorPickerType.both: false,
-                      ColorPickerType.primary: false,
-                      ColorPickerType.accent: true,
-                      ColorPickerType.bw: false,
-                      ColorPickerType.custom: false,
-                      ColorPickerType.wheel: false
-                    },
-                    onColorChanged: (colorValue) => customModelBlocProvider.add(ChangeCustomModelColor(colorValue))),
+                ColorPicker(pickersEnabled: const <ColorPickerType, bool>{
+                  ColorPickerType.both: false,
+                  ColorPickerType.primary: false,
+                  ColorPickerType.accent: true,
+                  ColorPickerType.bw: false,
+                  ColorPickerType.custom: false,
+                  ColorPickerType.wheel: false
+                }, onColorChanged: (colorValue) => customModelBlocProvider.add(ChangeCustomModelColor(colorValue))),
                 const Divider(),
                 ElevatedButton(
                   onPressed: () =>
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const CustomModelBlocEditor())),
                   child: const Text("change color and text"),
+                ),
+                ElevatedButton(
+                  onPressed: () =>
+                      customModelBlocProvider.add(ThrowCustomModelError("error 400")),
+                  child: const Text("Throw error"),
                 ),
               ],
             ),
@@ -76,3 +79,19 @@ class CustomModelBlocScreen extends StatelessWidget {
     );
   }
 }
+
+List<String> strings = [
+  'title',
+  'John Doe',
+  'Music',
+  'Video',
+  'VS code',
+  'Android Studio',
+  'Game',
+  'Flutter',
+  'Awesome',
+  'Flutter Awesome',
+  'Game',
+  'Flutter',
+  'Awesome',
+];

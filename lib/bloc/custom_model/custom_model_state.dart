@@ -12,4 +12,8 @@ class CustomModelLoaded extends CustomModelState {
   CustomModelLoaded(this.myModel);
 }
 
-class CustomModelError extends CustomModelState {}
+class CustomModelError extends CustomModelState {
+  final String error;
+
+  CustomModelError(this.error);
+}
