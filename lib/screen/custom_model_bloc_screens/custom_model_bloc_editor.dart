@@ -40,7 +40,7 @@ class _CustomModelBlocEditorState extends State<CustomModelBlocEditor> {
                   final provider = BlocProvider.of<CustomModelBloc>(context, listen: false);
                   provider.add(ChangeCustomModelTitleAndColor(TextColorModel(title: textController.text, color: pickedColor)));
                   ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text("bloc data updated")));
+                      .showSnackBar(const SnackBar(content: Text("bloc data updated")));
                 },
                 child: const Text("Update bloc data"))
           ],
