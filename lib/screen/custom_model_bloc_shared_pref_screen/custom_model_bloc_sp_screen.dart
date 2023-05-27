@@ -32,7 +32,7 @@ class _CustomModelSharedPrefSScreenState extends State<CustomModelSharedPrefSScr
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const ListTile(
-                    title: Text("Bloc Data:"),
+                    title: Text("Bloc data from shared preferences:"),
                   ),
                   CustomModelSharedPrefsBuilder(
                     myBuilder: (myModel) => ListTile(
@@ -49,7 +49,7 @@ class _CustomModelSharedPrefSScreenState extends State<CustomModelSharedPrefSScr
             Expanded(
                 child: ListView(
               children: [
-                const Text("EDIT BLOC DATA:"),
+                const Text("EDITABLE BLOC DATA:"),
                 TextField(
                   controller: textController,
                   decoration: const InputDecoration(hintText: "Some title"),
