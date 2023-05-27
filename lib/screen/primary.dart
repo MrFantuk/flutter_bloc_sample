@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_sample/screen/custom_model_bloc_screens/custom_model_bloc_screen.dart';
+import 'package:flutter_bloc_sample/screen/custom_model_bloc_shared_pref_screen/custom_model_bloc_sp_screen.dart';
 
 class PrimaryScreen extends StatelessWidget {
   const PrimaryScreen({super.key});
@@ -19,13 +20,11 @@ class PrimaryScreen extends StatelessWidget {
               title: const Text("bloc example 1"),
               trailing: const Icon(CupertinoIcons.chevron_right),
             ),
-          
             ListTile(
-              onTap: () {},
-              title: const Text("cubit example 1"),
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CustomModelSharedPrefSScreen())),
+              title: const Text("bloc example with shared Prefs"),
               trailing: const Icon(CupertinoIcons.chevron_right),
             ),
-            
           ],
         ),
       ),
