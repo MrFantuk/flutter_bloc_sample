@@ -12,10 +12,6 @@ class CustomModelBloc extends Bloc<CustomModelEvent, CustomModelState> {
     on<ChangeCustomModelColor>(_changeColor);
     on<ChangeCustomModelTitleAndColor>(
       (event, emit) async {
-        // Симуляция загрузки
-        emit(CustomModelLoading());
-        // Симуляция ожидания
-        await Future.delayed(const Duration(seconds: 3));
         emit(CustomModelLoaded(event.myModel));
       },
     );
